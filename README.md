@@ -1,3 +1,5 @@
+![example workflow](https://github.com/kirenger/api_yamdb/actions/workflows/yamdb_workflow.yml/badge.svg)
+
 ### Описание
 
 Проект YaMDb собирает отзывы пользователей на произведения.
