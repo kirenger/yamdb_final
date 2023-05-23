@@ -1,5 +1,6 @@
-https://github.com/kirenger/api_yamdb/actions/workflows/yamdb_workflow.yml/badge.svg
+# api_yamdb
 
+![Git-Hub Actions](https://github.com/kirenger/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 ### Описание
 
 Проект YaMDb собирает отзывы пользователей на произведения.
