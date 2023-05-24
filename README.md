@@ -21,49 +21,60 @@
 ```
 git clone https://github.com/kirenger/api_yamdb.git
 ```
+Перейти в папку infra
 
 ```
-cd api_yamdb
+cd infra
 ```
 
-Cоздать и активировать виртуальное окружение:
+Запустить docker-compose.yaml (при установленном и запущенном Docker)
 
 ```
-python3 -m venv env
+sudo docker compose up -d --build
 ```
 
-* Если у вас Linux/macOS
-
-    ```
-    source env/bin/activate
-    ```
-
-* Если у вас windows
-
-    ```
-    source env/scripts/activate
-    ```
+Создаем миграции
 
 ```
-python3 -m pip install --upgrade pip
+sudo docker compose exec web python manage.py makemigrations
 ```
 
-Установить зависимости из файла requirements.txt:
+Запустили миграции
 
 ```
-pip install -r requirements.txt
+sudo docker compose exec web python manage.py migrate
 ```
 
-Выполнить миграции:
+Создаем суперюзера
 
 ```
-python3 manage.py migrate
+sudo docker compose exec web python manage.py createsuperuser
 ```
 
-Запустить проект:
+Собираем статику
 
 ```
-python3 manage.py runserver
+sudo docker compose exec web python manage.py collectstatic --no-input
+```
+
+Проверяем работоспособность приложения:
+
+```
+ http://localhost/admin/
+```
+
+Теперь наполните БД тестовыми данными.
+
+Можете сделать резервную копию БД командой
+
+```
+sudo docker compose exec web python manage.py dumpdata > fixtures.json
+```
+
+Подгрузите данные БД из директории infra\docker-compose.yaml:
+
+```
+sudo docker compose exec web python manage.py loaddata fixtures.json
 ```
 
 ### Примеры
