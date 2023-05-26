@@ -48,7 +48,7 @@ jobs:
         with:
           context: ./api_yamdb
           push: true
-          tags: kirenger1/yamdb:latest
+          tags: kirenger1/yamdbfinal:v2
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
